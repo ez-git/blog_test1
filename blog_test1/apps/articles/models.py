@@ -8,13 +8,13 @@ from django.utils import timezone
 class Article(models.Model):
     article_title = models.CharField('Название статьи', max_length=150)
     article_text = models.TextField('Содержание')
-    article_date = models.DateField('Дата публикации')
+    article_date = models.DateTimeField('Дата публикации')
 
     def __str__(self):
         return self.article_title
 
     def was_published_recently(self):
-        return self.article_date >= (timezone.now() - datetime.timedelta(days = 7))
+        return self.article_date >= (timezone.now() - datetime.timedelta(days=7))
 
     class Meta:
         verbose_name = 'Статья'
