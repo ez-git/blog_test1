@@ -14,3 +14,9 @@ def detail(request, article_id):
     except:
         raise Http404('Article not found')
 
+    return render(request, 'detail.html', {'article': a})
+
+
+def leave_comment(request):
+    pass
+

@@ -1,14 +1,18 @@
 {% extends 'base.html' %}
 
-{% block title %} Последние статьи {% endblock %}
+{% block title %} {{article.article_title}}{% endblock %}
 
 {% block content %}
 
-{% if latest_articles_list %}
-    {% for a in latest_articles_list %}
-        <a href="{% url 'articles:detail' a.id %}">{{ a.article_title }}</a>
-    {% endfor %}
-    {% else %}
-    Статьи не найдены
-{% endif %}
+<h2>{{ article.article_title }}</h2>
+
+<p>{{ article.article_text }}</p>
+
+<em>{{ article.article_date }}</em>
+
+<hr>
+<hr>
+
+<form action="{% url 'articles:leave_comment' article_id %}" method="POST"></form>
+
 {% endblock %}
